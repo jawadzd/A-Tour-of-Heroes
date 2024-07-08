@@ -8,6 +8,7 @@ import { MessageService } from '../message.service';
 import { HeroDetailComponent } from "../hero-detail/hero-detail.component";
 
 
+
 @Component({
     selector: 'app-heroes',
     standalone: true,
@@ -15,23 +16,17 @@ import { HeroDetailComponent } from "../hero-detail/hero-detail.component";
     styleUrl: './heroes.component.css',
     imports: [CommonModule, FormsModule, HeroDetailComponent,RouterOutlet, RouterModule]
 })
-export class HeroesComponent implements OnInit{
-
+export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
-  selectedHero?: Hero;
 
-  constructor(private heroService: HeroService,private messageService: MessageService) { }
-  getHeroes(): void { 
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
-  }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
     this.getHeroes();
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  getHeroes(): void {
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
   }
-
 }
