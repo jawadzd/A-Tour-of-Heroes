@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../heroes/hero';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.css' ],
-  imports: [CommonModule]
+  imports: [CommonModule, RouterOutlet, RouterModule]
 })
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
