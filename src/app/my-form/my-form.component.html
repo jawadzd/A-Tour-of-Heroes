@@ -1,0 +1,22 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name">
+    <div *ngIf="myForm.get('name')!.hasError('containsAngular')">
+      Name should not contain the word "angular".
+    </div>
+  
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email">
+    <div *ngIf="myForm.get('email')!.hasError('email')">
+      Enter a valid email address.
+    </div>
+  
+    <label for="password">Password:</label>
+    <input id="password" formControlName="password" type="password">
+    <div *ngIf="myForm.get('password')!.hasError('minlength')">
+      Password must be at least 6 characters long.
+    </div>
+  
+    <button type="submit">Submit</button>
+  </form>
+  
